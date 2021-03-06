@@ -10,7 +10,7 @@ source:
   sha256: d8165261de76e7508505c341d94c02b113dc963f274543abca74dbfabd021261
 
 build:
-  number: 0
+  number: 1
   script: python -m pip install --no-deps --ignore-installed .
   noarch: python
 
@@ -22,7 +22,7 @@ requirements:
     - path.py
     - pip
     - pytest
-    - python
+    - python >=2
     - setuptools
     - setuptools-git
     - six
@@ -33,15 +33,18 @@ requirements:
     - mock
     - path.py
     - pytest
-    - python
+    - python >=2
     - six
     - termcolor
 
 test:
   imports:
     - pytest_shutil
+  commands:
+    - pip check
   requires:
     - pytest
+    - pip
 
 about:
   home: https://github.com/manahl/pytest-plugins
