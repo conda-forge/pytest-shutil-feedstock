@@ -33,11 +33,10 @@ requirements:
 test:
   imports:
     - pytest_shutil
-  # pip looks for path-py but the package name is path.py :-(
-  # requires:
-  #   - pip
-  # commands:
-  #   - pip check
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/manahl/pytest-plugins
