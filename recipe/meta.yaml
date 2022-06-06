@@ -21,10 +21,9 @@ requirements:
     - python >=3.6
     - setuptools-git
   run:
-    - contextlib2
+    # https://github.com/man-group/pytest-plugins/blob/v{{ version }}/pytest-shutil/setup.py#L25
     - execnet
-    - mock
-    - path.py
+    - path
     - pytest
     - python >=3.6
     - six
