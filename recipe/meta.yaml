@@ -21,12 +21,15 @@ requirements:
     - python >=3.6
     - setuptools-git
   run:
-    # https://github.com/man-group/pytest-plugins/blob/v{{ version }}/pytest-shutil/setup.py#L25
-    - execnet
-    - path
-    - pytest
     - python >=3.6
+    # https://github.com/man-group/pytest-plugins/blob/v{{ version }}/pytest-shutil/setup.py#L25
     - six
+    - execnet
+    # 'contextlib2;python_version<"3"',
+    - pytest
+    - path
+    # 'path.py; python_version < "3.5"',
+    # 'mock; python_version<"3.3"',
     - termcolor
 
 test:
