@@ -1,6 +1,5 @@
 {% set name = "pytest-shutil" %}
-{% set version = "1.7.0" %}
-
+{% set version = "1.8.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pytest-shutil-{{ version }}.tar.gz
-  sha256: d8165261de76e7508505c341d94c02b113dc963f274543abca74dbfabd021261
+  sha256: aad006ef7b6efcbace1e6bdf90ea7870c4367ab917b85fbdbac1fca1df1f48a0
 
 build:
-  number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
   host:
@@ -21,32 +20,29 @@ requirements:
     - python >=3.6
     - setuptools-git
   run:
-    - contextlib2
-    - execnet
-    - mock
-    - path.py
-    - pytest
     - python >=3.6
+    # https://github.com/man-group/pytest-plugins/blob/{{ version }}/pytest-shutil/setup.py
     - six
+    - execnet
+    - pytest
     - termcolor
 
 test:
   imports:
     - pytest_shutil
-  # pip looks for path-py but the package name is path.py :-(
-  # requires:
-  #   - pip
-  # commands:
-  #   - pip check
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
-  home: https://github.com/manahl/pytest-plugins
+  home: https://github.com/man-group/pytest-plugins
   license: MIT
   license_family: MIT
-  license_file: 'LICENSE'
+  license_file: LICENSE
   summary: A goodie-bag of unix shell and environment tools for py.test
-  doc_url: https://github.com/manahl/pytest-plugins/tree/master/pytest-shutil#readme
-  dev_url: https://github.com/manahl/pytest-plugins
+  doc_url: https://github.com/man-group/pytest-plugins/tree/master/pytest-shutil#readme
+  dev_url: https://github.com/man-group/pytest-plugins
 
 extra:
   recipe-maintainers:
