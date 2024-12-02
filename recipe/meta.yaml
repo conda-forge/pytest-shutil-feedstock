@@ -16,11 +16,12 @@ build:
 
 requirements:
   host:
+    - python {{ python_min }}
+    - setuptools
     - pip
-    - python >=3.6
     - setuptools-git
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     # https://github.com/man-group/pytest-plugins/blob/{{ version }}/pytest-shutil/setup.py
     - six
     - execnet
@@ -33,6 +34,7 @@ test:
   commands:
     - pip check
   requires:
+    - python {{ python_min }}
     - pip
 
 about:
