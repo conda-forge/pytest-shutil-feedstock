@@ -1,13 +1,13 @@
 {% set name = "pytest-shutil" %}
-{% set version = "1.8.0" %}
+{% set version = "1.8.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pytest-shutil-{{ version }}.tar.gz
-  sha256: aad006ef7b6efcbace1e6bdf90ea7870c4367ab917b85fbdbac1fca1df1f48a0
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pytest-shutil-{{ version }}.tar.gz
+  sha256: 7dcc02e8a372098d51a98737e7f662e6edfd75cec7070a11e904141de49d866b
 
 build:
   noarch: python
@@ -16,11 +16,12 @@ build:
 
 requirements:
   host:
+    - python {{ python_min }}
+    - setuptools
     - pip
-    - python >=3.6
     - setuptools-git
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     # https://github.com/man-group/pytest-plugins/blob/{{ version }}/pytest-shutil/setup.py
     - six
     - execnet
@@ -33,6 +34,7 @@ test:
   commands:
     - pip check
   requires:
+    - python {{ python_min }}
     - pip
 
 about:
